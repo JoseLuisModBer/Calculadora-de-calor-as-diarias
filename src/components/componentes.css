@@ -1,0 +1,51 @@
+#tarjeta {
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: lightblue;
+  padding: 1rem 2rem;
+  width: auto;
+}
+
+.formulario-y-datos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/*---------------------------------------------------------------*/
+
+/*###################
+    #### FORMULARIOS ####
+    ###################*/
+
+.formulario-tarjeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: pink;
+  padding: 1rem;
+}
+
+.formulario-tarjeta > label {
+  font-weight: bold;
+}
+
+.formulario-tarjeta > label:last-of-type {
+  margin-top: 0.5rem;
+}
+
+.formulario-tarjeta > input {
+  width: 200px;
+  margin-top: 0.2rem;
+  padding: 0.5rem;
+}
+
+.formulario-tarjeta > button {
+  margin-top: 1rem;
+}
