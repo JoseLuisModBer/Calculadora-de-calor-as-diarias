@@ -1,15 +1,16 @@
 #tarjeta {
-  border: 2px solid black;
+  border: 4px solid #000;
   border-radius: 5px;
-  background-color: lightblue;
-  padding: 1rem 2rem;
+  background-color: var(--ice);
+  padding: 1rem 1rem;
   width: auto;
 }
 
 .formulario-y-datos {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-evenly;
   gap: 2rem;
   flex-wrap: wrap;
 }
@@ -17,8 +18,8 @@
 /*---------------------------------------------------------------*/
 
 /*###################
-    #### FORMULARIOS ####
-    ###################*/
+#### FORMULARIOS ####
+###################*/
 
 .formulario-tarjeta {
   display: flex;
@@ -28,7 +29,7 @@
 
   border: 2px solid black;
   border-radius: 5px;
-  background-color: pink;
+  background-color: var(--pink);
   padding: 1rem;
 }
 
@@ -47,5 +48,41 @@
 }
 
 .formulario-tarjeta > button {
+  margin-top: 1rem;
+}
+
+/*---------------------------------------------------------------*/
+
+/*##################
+#### RESULTADOS ####
+##################*/
+
+#seccion-limite,
+#seccion-desayunos,
+#seccion-comidas,
+#seccion-cenas,
+#sección-deportes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/*---------------------------------------------------------------*/
+
+/*###############
+#### TOTALES ####
+###############*/
+
+hr {
+  border: 0;
+  height: 2px;
+  background: #333;
+}
+
+#sumatorio-desayunos > h3,
+#sumatorio-comidas,
+#sumatorio-cenas,
+#sumatorio-deportes {
+  text-align: center;
   margin-top: 1rem;
 }

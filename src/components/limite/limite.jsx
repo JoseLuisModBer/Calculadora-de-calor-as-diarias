@@ -8,7 +8,10 @@ export default function LimiteDiario({
 }) {
   const [textoDelLimite, setTextoDelLimite] = useState('');
   const [loading, setLoading] = useState();
-
+  // Obtenemos referencia el elemento de App que muestra el resultado
+  const resultadoCaloriasElement = document.getElementById(
+    'resultado-calorias-restantes'
+  );
   // Función que maneja el envío del formulario.
   const handleSubmitLimite = (e) => {
     setLoading(true);
@@ -24,6 +27,9 @@ export default function LimiteDiario({
 
       // Vaciamos los inputs del formulario.
       setTextoDelLimite('');
+
+      // Ocultamos la sección de resultado final
+      resultadoCaloriasElement.classList.add('doNotShow');
     } catch (err) {
       console.error(err);
     }
@@ -35,12 +41,10 @@ export default function LimiteDiario({
 
   return (
     <div id="tarjeta">
-      {/*       <h2>LÍMITE:</h2> */}
+      <h2>LÍMITE:</h2>
       <div className="formulario-y-datos">
         <form className="formulario-tarjeta" onSubmit={handleSubmitLimite}>
-          <label htmlFor="nuevoLimite">
-            Introduce tu límite de calorías (kcal) diario:
-          </label>
+          <label htmlFor="nuevoLimite">Límite de kilocalorías diario:</label>
           <input
             id="nuevoLimite"
             type="number"
@@ -56,7 +60,7 @@ export default function LimiteDiario({
           </button>
         </form>
 
-        <section id="seccion-desayunos">
+        <section id="seccion-limite">
           <h3>Tu límite diario de calorías es:</h3>
           {limiteDeCalorias.length > 0 &&
             limiteDeCalorias.map((limite) => {

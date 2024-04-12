@@ -5,16 +5,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
+/**************
+*** COLORES ***
+**************/
+
+* {
+  --pink: #ffa8b6;
+  --bug: #ccf2a3;
+  --dark: #705848;
+  --dragon: #7038f8;
+  --electric: #f8d030;
+  --fairy: #f0b6bc;
+  --fighting: #c03028;
+  --fire: #f08030;
+  --flying: #a890f0;
+  --ghost: #705898;
+  --grass: green;
+  --ground: #e0c068;
+  --ice: #98d8d8;
+  --normal: #a8a878;
+  --poison: #a040a0;
+  --psychic: #f85888;
+  --rock: #b8a038;
+  --steel: #b8b8d0;
+  --water: #6890f0;
+  --stellar: #53b8eb;
+}
+
+body {
+  margin: 0;
+}
+
 /*************
 *** TEXTOS ***
 *************/
 h2 {
-  font-family: 'Gaegu', cursive;
+  font-family: 'Comic neue', cursive;
   font-weight: bold;
   font-style: normal;
 
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  /* Color del texto */
+  color: #a890f0; /* Color blanco */
+
+  /* Tamaño y color del trazo */
+  text-shadow: -2px -2px 0 #000, 1px -1px 0 #000, -2px 2px 0 #000,
+    1px 1px 0 #000; /* Trazo de color negro */
+}
+
+h3,
+p {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
@@ -31,4 +75,31 @@ td,
 label,
 input {
   font-family: 'Comic Neue', 'Shantell Sans', sans-serif;
+}
+
+p,
+button {
+  font-size: 1.2rem;
+}
+
+button {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  background-color: #e3a8ff;
+  box-shadow: 3px 3px 5px black;
+}
+
+button:hover {
+  background-color: #ecc2ff;
+  box-shadow: 1px 1px 2px black;
+}
+
+.doNotShow {
+  display: none;
+}
+
+.show {
+  display: block;
 }

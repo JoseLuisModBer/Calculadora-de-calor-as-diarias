@@ -1,0 +1,83 @@
+/*************
+*** HEADER ***
+**************/
+.app > header {
+  background-color: var(--red);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app > header > .navlink-logo-pokepedia {
+  display: flex;
+  justify-content: center;
+}
+
+.app > header > .navlink-logo-pokepedia > #logo-pokepedia {
+  width: 30%;
+  position: relative;
+  top: 5px;
+}
+
+#menu-header {
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -20px;
+  /*   margin-bottom: 0.5rem; */
+  position: relative;
+  top: -20px;
+}
+
+.menu-button-1 {
+  margin-right: 1rem;
+}
+
+.menu-button-2 {
+  margin-left: 1rem;
+}
+
+/*--------------------RESPONSIVE----------------------*/
+@media (max-width: 800px) {
+  .app > header > .navlink-logo-pokepedia > #logo-pokepedia {
+    width: 45%;
+  }
+}
+
+@media (max-width: 500px) {
+  .app > header > .navlink-logo-pokepedia > #logo-pokepedia {
+    width: 65%;
+  }
+
+  .menu-button-1,
+  .menu-button-2 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 485px) {
+  .app > header > #logo-pokepedia {
+    width: 65%;
+  }
+  .menu-button-1,
+  .menu-button-2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  #menu-header {
+    margin-top: 5px;
+    margin-bottom: -18px;
+    /*   margin-bottom: 0.5rem; */
+    position: relative;
+    top: -18px;
+  }
+
+  .menu-button-1,
+  .menu-button-2 {
+    font-size: 18px;
+  }
+}

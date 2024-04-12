@@ -11,6 +11,10 @@ export default function Cena({
   const [textoDeLaCena, setTextoDeLaCena] = useState('');
   const [caloriasDeLaCena, setCaloriasDeLaCena] = useState('');
   const [loading, setLoading] = useState();
+  // Obtenemos referencia el elemento de App que muestra el resultado
+  const resultadoCaloriasElement = document.getElementById(
+    'resultado-calorias-restantes'
+  );
 
   // Función que maneja el envío del formulario.
   const handleSubmitCena = (e) => {
@@ -30,6 +34,8 @@ export default function Cena({
       // Vaciamos los inputs del formulario.
       textoDeLaCena('');
       setCaloriasDeLaCena('');
+      // Ocultamos la sección de resultado final
+      resultadoCaloriasElement.classList.add('doNotShow');
     } catch (err) {
       console.error(err);
     }
@@ -46,7 +52,7 @@ export default function Cena({
 
   return (
     <div id="tarjeta">
-      {/*       <h2>CENA:</h2> */}
+      <h2>CENA:</h2>
       <div className="formulario-y-datos">
         <form className="formulario-tarjeta" onSubmit={handleSubmitCena}>
           <label htmlFor="nuevaCena">Introduce una nueva cena:</label>
@@ -90,7 +96,7 @@ export default function Cena({
             })}
         </section>
       </div>
-
+      <hr></hr>
       <section id="sumatorio-cenas">
         <h3>Total = {totalKcalCena} kilocalorías</h3>
       </section>

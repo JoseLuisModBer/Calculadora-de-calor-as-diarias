@@ -11,9 +11,13 @@ export default function Deporte({
   const [textoDelDeporte, setTextoDelDeporte] = useState('');
   const [caloriasDelDeporte, setCaloriasDelDeporte] = useState('');
   const [loading, setLoading] = useState();
+  // Obtenemos referencia el elemento de App que muestra el resultado
+  const resultadoCaloriasElement = document.getElementById(
+    'resultado-calorias-restantes'
+  );
 
   // Función que maneja el envío del formulario.
-  const handleSubmitCena = (e) => {
+  const handleSubmitDeporte = (e) => {
     setLoading(true);
     e.preventDefault();
     try {
@@ -30,6 +34,8 @@ export default function Deporte({
       // Vaciamos los inputs del formulario.
       textoDelDeporte('');
       setCaloriasDelDeporte('');
+      // Ocultamos la sección de resultado final
+      resultadoCaloriasElement.classList.add('doNotShow');
     } catch (err) {
       console.error(err);
     }
@@ -46,9 +52,9 @@ export default function Deporte({
 
   return (
     <div id="tarjeta">
-      {/*       <h2>CENA:</h2> */}
+      <h2>DEPORTE:</h2>
       <div className="formulario-y-datos">
-        <form className="formulario-tarjeta" onSubmit={handleSubmitCena}>
+        <form className="formulario-tarjeta" onSubmit={handleSubmitDeporte}>
           <label htmlFor="nuevaCena">Introduce un nuevo deporte:</label>
           <input
             id="nuevaCena"
@@ -61,7 +67,7 @@ export default function Deporte({
             placeholder="Nuevo deporte..."
             onChange={(e) => setTextoDelDeporte(e.target.value)}
           />
-          <label htmlFor="nuevaCenaKcal">...y sus kilocalorías:</label>
+          <label htmlFor="nuevaCenaKcal">...y las kilocalorías gastadas:</label>
           <input
             id="nuevaCenaKcal"
             type="number"
@@ -90,7 +96,7 @@ export default function Deporte({
             })}
         </section>
       </div>
-
+      <hr></hr>
       <section id="sumatorio-deportes">
         <h3>Total = {totalKcalDeporte} kilocalorías</h3>
       </section>

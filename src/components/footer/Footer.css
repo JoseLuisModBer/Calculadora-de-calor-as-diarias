@@ -1,0 +1,37 @@
+/*************
+*** FOOTER ***
+**************/
+
+footer {
+  background-color: var(--ice);
+  padding: 1rem 1rem;
+}
+
+footer > p {
+  text-align: center;
+  color: #000;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.link-footer {
+  color: #000;
+}
+
+.link-footer:hover {
+  text-decoration: none;
+  font-style: italic;
+}
+
+/*-------------------RESPONSIVE-----------------------*/
+@media (max-width: 485px) {
+  footer > p {
+    font-size: 17px !important;
+  }
+}
+
+@media (max-width: 485px) {
+  footer > p {
+    font-size: 16px !important;
+  }
+}

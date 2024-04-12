@@ -6,7 +6,15 @@
 
 .app > main {
   flex-grow: 1;
-  background-color: var(--amarillo);
+  background-color: #ffffff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#contenedor-limite {
+  margin-top: 1rem;
 }
 
 #contenedor-limite,
@@ -16,10 +24,19 @@
 #contenedor-deportes {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+@media (max-width: 612px) {
+  #contenedor-limite,
+  #contenedor-desayunos,
+  #contenedor-comidas,
+  #contenedor-cenas,
+  #contenedor-deportes {
+    max-width: 400px;
+  }
 }
 
 /*---------------------------------------------------------------*/
@@ -31,8 +48,24 @@
 #seccion-botones-calcular-y-borrar {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.erraseall-button {
-  margin-top: 1rem;
+.calcular-button {
+  margin-right: 1rem;
+}
+
+/*---------------------------------------------------------------*/
+
+/*#################
+  #### RESULTADO ####
+  ###############*/
+
+#resultado-calorias-restantes > p {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  color: red;
 }

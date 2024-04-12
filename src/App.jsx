@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react';
 import './App.css';
+import { useState, useEffect } from 'react';
+
+/* import { Header } from './components/header/Header'; */
+/* import { Instrucciones } from './components/instrucciones/instrucciones'; */
 import LimiteDiario from './components/limite/limite';
 import Desayuno from './components/desayuno/desayuno';
 import Comida from './components/comida/comida';
 import Cena from './components/cena/cena';
 import Deporte from './components/deporte/deporte';
+import { Footer } from './components/footer/Footer';
 
 export default function App() {
   /*###########################
@@ -12,6 +16,9 @@ export default function App() {
   ###########################*/
 
   const [loading, setLoading] = useState();
+  const resultadoCaloriasElement = document.getElementById(
+    'resultado-calorias-restantes'
+  );
 
   //---------------------------------------------------------------
 
@@ -167,6 +174,8 @@ export default function App() {
       // Borramos el array de deporte de la variable y del localstorage
       setDeportes([]);
       localStorage.setItem('desayunos', JSON.stringify(desayunos));
+      // Ocultamos la sección de resultado final
+      resultadoCaloriasElement.classList.add('doNotShow');
     } catch (err) {
       console.error(err);
     }
@@ -192,6 +201,9 @@ export default function App() {
         (totalKcalDesayuno + totalKcalComida + totalKcalCena) -
         totalKcalDeporte;
       setCaloriasRestantes(caloriasRestantes);
+
+      // Hacemos visible la sección de resultado final
+      resultadoCaloriasElement.classList.remove('doNotShow');
     } catch (err) {
       console.error(err);
     }
@@ -204,6 +216,8 @@ export default function App() {
 
   return (
     <div className="app">
+      {/*       <Header /> */}
+
       <main>
         <section id="contenedor-limite">
           <LimiteDiario
@@ -250,7 +264,7 @@ export default function App() {
 
         <section id="seccion-botones-calcular-y-borrar">
           <button
-            className="erraseall-button"
+            className="calcular-button"
             onClick={handleCalculateRemainingCalories}
             disabled={loading}
           >
@@ -266,8 +280,12 @@ export default function App() {
           </button>
         </section>
 
-        <p>Las calorías que aún puedes consumir son: {caloriasRestantes}</p>
+        <section id="resultado-calorias-restantes" className="doNotShow">
+          <p>Las calorías que aún puedes consumir son: {caloriasRestantes}</p>
+        </section>
       </main>
+
+      <Footer />
     </div>
   );
 }

@@ -11,6 +11,10 @@ export default function Desayuno({
   const [textoDelDesayuno, setTextoDelDesayuno] = useState('');
   const [caloriasDelDesayuno, setCaloriasDelDesayuno] = useState('');
   const [loading, setLoading] = useState();
+  // Obtenemos referencia el elemento de App que muestra el resultado
+  const resultadoCaloriasElement = document.getElementById(
+    'resultado-calorias-restantes'
+  );
 
   // Función que maneja el envío del formulario.
   const handleSubmitDesayuno = (e) => {
@@ -30,6 +34,8 @@ export default function Desayuno({
       // Vaciamos los inputs del formulario.
       setTextoDelDesayuno('');
       setCaloriasDelDesayuno('');
+      // Ocultamos la sección de resultado final
+      resultadoCaloriasElement.classList.add('doNotShow');
     } catch (err) {
       console.error(err);
     }
@@ -49,7 +55,7 @@ export default function Desayuno({
 
   return (
     <div id="tarjeta">
-      {/*       <h2>DESAYUNO:</h2> */}
+      <h2>DESAYUNO:</h2>
       <div className="formulario-y-datos">
         <form className="formulario-tarjeta" onSubmit={handleSubmitDesayuno}>
           <label htmlFor="nuevoDesayuno">Introduce un nuevo desayuno:</label>
@@ -93,7 +99,7 @@ export default function Desayuno({
             })}
         </section>
       </div>
-
+      <hr></hr>
       <section id="sumatorio-desayunos">
         <h3>Total = {totalKcalDesayuno} kilocalorías</h3>
       </section>
