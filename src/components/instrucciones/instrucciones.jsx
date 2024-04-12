@@ -5,11 +5,6 @@ import './instrucciones.css';
 export const Instrucciones = () => {
   return (
     <main className="main-instructions">
-      <img
-        src="https://fontmeme.com/permalink/240206/ac8f1b9a067a4bb14c6c77bfbd83801a.png"
-        alt="imagen-instrucciones"
-        id="imagen-instrucciones"
-      />
       <section>
         <h2>Instructions:</h2>
         <p>

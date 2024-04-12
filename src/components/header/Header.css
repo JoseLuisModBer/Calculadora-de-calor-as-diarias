@@ -2,7 +2,8 @@
 *** HEADER ***
 **************/
 .app > header {
-  background-color: var(--red);
+  background-color: var(--ice);
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,9 +16,10 @@
 }
 
 .app > header > .navlink-logo-pokepedia > #logo-pokepedia {
-  width: 30%;
+  width: 40%;
   position: relative;
   top: 5px;
+  padding-bottom: 2rem;
 }
 
 #menu-header {
@@ -29,6 +31,18 @@
   /*   margin-bottom: 0.5rem; */
   position: relative;
   top: -20px;
+}
+
+.menu-button-1,
+.menu-button-2 {
+  color: #000;
+  font-weight: bold;
+}
+
+.menu-button-1:hover,
+.menu-button-2:hover {
+  text-decoration: none;
+  font-style: italic;
 }
 
 .menu-button-1 {

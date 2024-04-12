@@ -4,7 +4,7 @@
 
 footer {
   background-color: var(--ice);
-  padding: 1rem 1rem;
+  padding: 1rem;
 }
 
 footer > p {
@@ -12,6 +12,10 @@ footer > p {
   color: #000;
   font-size: 25px;
   font-weight: bold;
+}
+
+footer > p > a {
+  font-size: 25px;
 }
 
 .link-footer {
