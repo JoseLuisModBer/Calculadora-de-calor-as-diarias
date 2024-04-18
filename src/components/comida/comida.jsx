@@ -48,6 +48,21 @@ export default function Comida({
   );
 
   //---------------------------------------------------------------
+
+  const handleDeleteComida = (e) => {
+    setLoading(true);
+    e.preventDefault();
+    try {
+      // Borramos el array de comidas de la variable y del localstorage
+      setComidas([]);
+      localStorage.setItem('desayunos', JSON.stringify(comidas));
+    } catch (err) {
+      console.error(err);
+    }
+    setLoading(false);
+  };
+
+  //---------------------------------------------------------------
   //---------------------------------------------------------------
 
   return (
@@ -94,6 +109,13 @@ export default function Comida({
                 </p>
               );
             })}
+          <button
+            className="borrar-limite-button button-borrar"
+            onClick={handleDeleteComida}
+            disabled={loading}
+          >
+            Borrar
+          </button>
         </section>
       </div>
       <hr></hr>

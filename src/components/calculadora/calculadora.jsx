@@ -13,9 +13,9 @@ export default function Calculadora() {
   ###########################*/
 
   const [loading, setLoading] = useState();
-  const resultadoCaloriasElement = document.getElementById(
+  /*   const resultadoCaloriasElement = document.getElementById(
     'resultado-calorias-restantes'
-  );
+  ); */
 
   //---------------------------------------------------------------
 
@@ -26,7 +26,7 @@ export default function Calculadora() {
     JSON.parse(localStorage.getItem('limiteDiario')) || [];
 
   const [limiteDeCalorias, setLimiteDeCalorias] = useState(
-    storedLimiteInLocalStorage
+    storedLimiteInLocalStorage || 0
   );
 
   useEffect(() => {
@@ -164,15 +164,13 @@ export default function Calculadora() {
       localStorage.setItem('desayunos', JSON.stringify(desayunos));
       // Borramos el array de comidas de la variable y del localstorage
       setComidas([]);
-      localStorage.setItem('desayunos', JSON.stringify(desayunos));
+      localStorage.setItem('desayunos', JSON.stringify(comidas));
       // Borramos el array de cenas de la variable y del localstorage
       setCenas([]);
-      localStorage.setItem('desayunos', JSON.stringify(desayunos));
+      localStorage.setItem('desayunos', JSON.stringify(cenas));
       // Borramos el array de deporte de la variable y del localstorage
       setDeportes([]);
-      localStorage.setItem('desayunos', JSON.stringify(desayunos));
-      // Ocultamos la sección de resultado final
-      resultadoCaloriasElement.classList.add('doNotShow');
+      localStorage.setItem('desayunos', JSON.stringify(deportes));
     } catch (err) {
       console.error(err);
     }
@@ -186,7 +184,23 @@ export default function Calculadora() {
   #################*/
   const [caloriasRestantes, setCaloriasRestantes] = useState(0);
 
-  const handleCalculateRemainingCalories = (e) => {
+  useEffect(() => {
+    const limiteDiario =
+      limiteDeCalorias.length > 0 ? limiteDeCalorias[0].limiteDeCalorias : 0;
+
+    const caloriasRestantes =
+      limiteDiario -
+      (totalKcalDesayuno + totalKcalComida + totalKcalCena - totalKcalDeporte);
+    setCaloriasRestantes(caloriasRestantes);
+  }, [
+    limiteDeCalorias,
+    totalKcalDesayuno,
+    totalKcalComida,
+    totalKcalCena,
+    totalKcalDeporte,
+  ]);
+
+  /*   const handleCalculateRemainingCalories = (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -199,14 +213,14 @@ export default function Calculadora() {
         totalKcalDeporte;
       setCaloriasRestantes(caloriasRestantes);
 
-      // Hacemos visible la sección de resultado final
+
       resultadoCaloriasElement.classList.remove('doNotShow');
     } catch (err) {
       console.error(err);
     }
 
     setLoading(false);
-  };
+  }; */
 
   //---------------------------------------------------------------
   //---------------------------------------------------------------
@@ -257,16 +271,16 @@ export default function Calculadora() {
       </section>
 
       <section id="seccion-botones-calcular-y-borrar">
-        <button
+        {/*         <button
           className="calcular-button"
           onClick={handleCalculateRemainingCalories}
           disabled={loading}
         >
           Calcular
-        </button>
+        </button> */}
 
         <button
-          className="erraseall-button"
+          className="erraseall-button button-borrar"
           onClick={handleErraseAll}
           disabled={loading}
         >
@@ -274,8 +288,8 @@ export default function Calculadora() {
         </button>
       </section>
 
-      <section id="resultado-calorias-restantes" className="doNotShow">
-        <p>Las calorías que aún puedes consumir son: {caloriasRestantes}</p>
+      <section id="resultado-calorias-restantes" className="show alert">
+        <p>Las kilocalorías que aún puedes consumir son: {caloriasRestantes}</p>
       </section>
     </>
   );

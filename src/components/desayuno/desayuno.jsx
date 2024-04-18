@@ -51,6 +51,21 @@ export default function Desayuno({
   );
 
   //---------------------------------------------------------------
+
+  const handleDeleteDesayuno = (e) => {
+    setLoading(true);
+    e.preventDefault();
+    try {
+      // Borramos el array de desayunos de la variable y del localstorage
+      setDesayunos([]);
+      localStorage.setItem('desayunos', JSON.stringify(desayunos));
+    } catch (err) {
+      console.error(err);
+    }
+    setLoading(false);
+  };
+
+  //---------------------------------------------------------------
   //---------------------------------------------------------------
 
   return (
@@ -97,6 +112,13 @@ export default function Desayuno({
                 </p>
               );
             })}
+          <button
+            className="borrar-limite-button button-borrar"
+            onClick={handleDeleteDesayuno}
+            disabled={loading}
+          >
+            Borrar
+          </button>
         </section>
       </div>
       <hr></hr>

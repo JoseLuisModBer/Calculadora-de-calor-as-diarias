@@ -48,6 +48,21 @@ export default function Deporte({
   );
 
   //---------------------------------------------------------------
+
+  const handleDeleteDeporte = (e) => {
+    setLoading(true);
+    e.preventDefault();
+    try {
+      // Borramos el array de deporte de la variable y del localstorage
+      setDeportes([]);
+      localStorage.setItem('desayunos', JSON.stringify(deportes));
+    } catch (err) {
+      console.error(err);
+    }
+    setLoading(false);
+  };
+
+  //---------------------------------------------------------------
   //---------------------------------------------------------------
 
   return (
@@ -94,6 +109,13 @@ export default function Deporte({
                 </p>
               );
             })}
+          <button
+            className="borrar-limite-button button-borrar"
+            onClick={handleDeleteDeporte}
+            disabled={loading}
+          >
+            Borrar
+          </button>
         </section>
       </div>
       <hr></hr>

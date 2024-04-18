@@ -48,6 +48,21 @@ export default function Cena({
   );
 
   //---------------------------------------------------------------
+
+  const handleDeleteCena = (e) => {
+    setLoading(true);
+    e.preventDefault();
+    try {
+      // Borramos el array de cenas de la variable y del localstorage
+      setCenas([]);
+      localStorage.setItem('desayunos', JSON.stringify(cenas));
+    } catch (err) {
+      console.error(err);
+    }
+    setLoading(false);
+  };
+
+  //---------------------------------------------------------------
   //---------------------------------------------------------------
 
   return (
@@ -94,6 +109,13 @@ export default function Cena({
                 </p>
               );
             })}
+          <button
+            className="borrar-limite-button button-borrar"
+            onClick={handleDeleteCena}
+            disabled={loading}
+          >
+            Borrar
+          </button>
         </section>
       </div>
       <hr></hr>

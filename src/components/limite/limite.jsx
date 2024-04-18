@@ -12,6 +12,7 @@ export default function LimiteDiario({
   const resultadoCaloriasElement = document.getElementById(
     'resultado-calorias-restantes'
   );
+
   // Función que maneja el envío del formulario.
   const handleSubmitLimite = (e) => {
     setLoading(true);
@@ -30,6 +31,20 @@ export default function LimiteDiario({
 
       // Ocultamos la sección de resultado final
       resultadoCaloriasElement.classList.add('doNotShow');
+    } catch (err) {
+      console.error(err);
+    }
+    setLoading(false);
+  };
+
+  //---------------------------------------------------------------
+
+  const handleDeleteLimite = (e) => {
+    setLoading(true);
+    e.preventDefault();
+    try {
+      // Ponemos el límete de calorías a cero.
+      setLimiteDeCalorias([]);
     } catch (err) {
       console.error(err);
     }
@@ -70,6 +85,13 @@ export default function LimiteDiario({
                 </p>
               );
             })}
+          <button
+            className="borrar-limite-button button-borrar"
+            onClick={handleDeleteLimite}
+            disabled={loading}
+          >
+            Borrar
+          </button>
         </section>
       </div>
     </div>
